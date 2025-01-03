@@ -45,15 +45,17 @@ const ElectionList = () => {
 
         // 候选人
         // console.log(new Date(Number(votingEndTime)*1000), new Date(), new Date(Number(votingEndTime)*1000) < new Date())
-        // if (new Date(Number(votingEndTime)*1000) < new Date()) {
-        //     const candidates = await contract.methods.getResults().call()
-        //     newElection.candidates = candidates.map(candidate => {
-        //         return {
-        //             ...candidate,
-        //             value: candidate.voteCount,
-        //         }
-        //     })
-        // } else {
+        if (new Date(Number(votingEndTime)*1000) < new Date()) {
+            const candidates = await contract.methods.getResults().call()
+            newElection.candidates = candidates.map(candidate => {
+                return {
+                    id: Number(candidate.id),
+                    name: candidate.name,
+                    value: Number(candidate.voteCount),
+                }
+            })
+            console.log(newElection.candidates)
+        } else {
             const candidates = await contract.methods.getCandidateNames().call()
             newElection.candidates = candidates.map((candidate, index) => {
                 return {
@@ -62,7 +64,7 @@ const ElectionList = () => {
                     value: 0
                 }
             })
-        // }
+        }
 
 
         // 投票情况
@@ -131,7 +133,7 @@ const ElectionList = () => {
     }
 
     return <div className="container" style={electionDetailContainerStyle}>
-        <div onClick={onClickBack} style={{cursor: 'pointer', height: 24, fontSize: 18, lineHeight: '24px', fontWeight: 'bold'}}>
+        <div onClick={onClickBack} style={{cursor: 'pointer', height: 24, fontSize: 18, lineHeight: '24px', fontWeight: 'bold', color: '#3e3e3e'}}>
             <LeftOutlined /> 返回
         </div>
         <div className="block">
@@ -145,13 +147,6 @@ const ElectionList = () => {
                 {/*<div className="item"><span>匿名</span>{election.anonymity}</div>*/}
             </div>
         </div>
-        {election.state === '已结束' && <div className="block">
-            <div className="title">投票结果</div>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                <PieChart key='1' data={election?.voterList} title="竞选结果"/>
-                <PieChart key='2' data={election?.voterList} title="投票结构"/>
-            </div>
-        </div>}
         <div className="block">
             <div className="title">投票</div>
             <Flex wrap gap="middle">
@@ -170,8 +165,15 @@ const ElectionList = () => {
                 }
             </Flex>
             {/*<div>投票状态：{['无权限', '未投票', '已投票'][election.votable]}</div>*/}
-            <Button disabled={election.hasVoted} type="primary" onClick={handleClickVote}>投票</Button>
+            <Button disabled={election.hasVoted} type="primary" onClick={handleClickVote} style={{marginTop: 12}}>投票</Button>
         </div>
+        {election.state === '已结束' && <div className="block">
+            <div className="title">投票结果</div>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                <PieChart key='1' data={election.candidates} title="竞选结果"/>
+                {/*<PieChart key='2' data={election.candidates} title="投票结构"/>*/}
+            </div>
+        </div>}
     </div>
 }
 

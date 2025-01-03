@@ -83,11 +83,11 @@ html,body,#root {
   position: relative;
   font-size: 14px;
   line-height: 18px;
-  margin: 16px 0;
+  margin: 24px 0;
   .title {
     line-height: 24px;
     font-size: 18px;
-    padding: 6px 0;
+    padding: 12px 0;
     font-weight: bold;
   }
   .list {
@@ -96,10 +96,13 @@ html,body,#root {
     gap: 16px;
     .item {
       width: 512px;
+      line-height: 18px;
       span {
         display: inline-block;
         font-weight: bold;
-        width: 64px
+        width: 64px;
+        text-align: end;
+        padding: 0 8px;
       }
     }
   }
