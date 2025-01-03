@@ -13,6 +13,7 @@
     "@ant-design/icons": "^5.5.2",
     "antd": "^5.22.5",
     "echarts": "^5.5.1",
+    "ethereumjs-tx": "^2.1.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.0.2",
@@ -29,6 +30,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.13.0",
+    "sass": "^1.83.0",
     "vite": "^6.0.3"
   }
 }

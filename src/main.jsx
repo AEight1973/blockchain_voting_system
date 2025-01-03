@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import './index.scss'
 import MainPanel from "./pages/MainPanel/index.jsx";
 import {HashRouter, Navigate, Route, Routes} from "react-router-dom";
 import ElectionList from "./pages/MainPanel/Election/ElectionList.jsx";

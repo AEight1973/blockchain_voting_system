@@ -1,0 +1,2 @@
+const keystore = {"address":"22d19d7c36b2fb6ca49fc98bba8c146f7568ee37","crypto":{"cipher":"aes-128-ctr","ciphertext":"e693193cb34b85871131b36f11c78c4620e4f0995ba041b04175a6e67478813b","cipherparams":{"iv":"ca5e469ff8aba5098754a3647cbb63e3"},"kdf":"scrypt","kdfparams":{"dklen":32,"n":262144,"p":1,"r":8,"salt":"e5bcc49cde14fe391b95e4e2b78531813387f3a08449ee1eaad533579aeae48b"},"mac":"a87ce2eeedafc6c69fe6922d2cb69d8c481a3e0cda65310faafc9e37b35a9209"},"id":"f7762438-713a-453f-8038-60a2b05c7ed4","version":3}
+export default keystore;

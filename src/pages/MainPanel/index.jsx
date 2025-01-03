@@ -1,6 +1,8 @@
 import { MailOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { Outlet } from "react-router-dom";
+import {deployContract} from "../../web3.js";
+import {useEffect} from "react";
 
 const headerStyle = {
     textAlign: 'left',
@@ -45,16 +47,22 @@ const onClick = (e) => {
     console.log('click', e);
 };
 
-const MainPanel  = () => (
-    <div style={{position: 'relative',width: '100%', height: '100%'}}>
+const MainPanel  = () => {
+    useEffect(() => {
+        // createNewAccount().then(account => console.log(account), error => console.log(error));
+        deployContract()
+        }, [])
+
+
+    return <div style={{position: 'relative', width: '100%', height: '100%'}}>
         <div style={headerStyle}>区块链投票系统</div>
         <div style={menuStyle}>
-            <Menu onClick={onClick} mode="vertical" items={items} />
+            <Menu onClick={onClick} mode="vertical" items={items}/>
         </div>
         <div style={contentStyle}>
-            <Outlet />
+            <Outlet/>
         </div>
     </div>
-);
+}
 
 export default MainPanel;
