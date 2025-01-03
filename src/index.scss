@@ -95,12 +95,45 @@ html,body,#root {
     flex-wrap: wrap;
     gap: 16px;
     .item {
-      width: 160px;
+      width: 512px;
       span {
         display: inline-block;
         font-weight: bold;
-        width: 48px
+        width: 64px
       }
     }
   }
+}
+
+.mainContainer {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  height: calc(100% - 64px);
+  gap: 64px;
+  .mainButton {
+    width: 160px;
+    height: 160px;
+  }
+  .text {
+    margin: 18px 0;
+    text-align: center;
+  }
+}
+
+.dynamic-delete-button {
+  position: relative;
+  top: 4px;
+  margin: 0 8px;
+  color: #999;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.dynamic-delete-button:hover {
+  color: #777;
+}
+.dynamic-delete-button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
